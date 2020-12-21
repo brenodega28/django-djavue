@@ -36,7 +36,7 @@ class VueComponentList:
         self.components.append(VueParser(location, file_name, self))
 
     @staticmethod
-    def from_file(path, file_name, engine=None) -> VueComponentList:
+    def from_file(path, file_name, engine=None):
         """
         Creates a new instance based on the root component location.
         """
