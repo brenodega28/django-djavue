@@ -6,7 +6,7 @@ from djavue.parser import VueParser
 
 class VueComponentList:
     """
-    Responsable for storing and loading components.
+    Responsible for storing and loading components.
     """
 
     def __init__(self):
@@ -19,6 +19,10 @@ class VueComponentList:
         return location in [c.location for c in self.components]
 
     def load(self, path, by=None):
+        """
+        Loads a component to the list, if it's already loaded then it does nothing.
+        """
+
         file_name = path.replace(";", "").replace('"', "")
         file_name += ".vue"
 
@@ -32,7 +36,11 @@ class VueComponentList:
         self.components.append(VueParser(location, file_name, self))
 
     @staticmethod
-    def from_file(path, file_name, engine=None):
+    def from_file(path, file_name, engine=None) -> VueComponentList:
+        """
+        Creates a new instance based on the root component location.
+        """
+
         component_list = VueComponentList()
         component_list.root_path = path
         component_list.engine = engine
