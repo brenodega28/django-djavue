@@ -2,9 +2,15 @@
 
 Djavue is a Django app that allows the usage of Vue files as Django Templates.
 
-## How to Use
+## Installation
 
-1. Add djavue to you INSTALLED APPS
+1. Install django-djavue from pip
+
+```
+pip install django-djavue
+```
+
+2. Add djavue to your INSTALLED APPS
 
 ```python
 INSTALLED_APPS = [
@@ -14,9 +20,11 @@ INSTALLED_APPS = [
 ]
 ```
 
-2. Create a .vue file inside your templates folder.
+## Quickstart
 
-3. Write a view that loads the template
+1. Create a .vue file inside your templates folder.
+
+2. Write a view that loads the template
 
 ```python
 from djavue import get_vue_template
