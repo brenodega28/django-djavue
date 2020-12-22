@@ -2,7 +2,7 @@ import re
 import os
 
 
-class VueParser:
+class VueComponent:
     """
     Parses a vue file to be understood by python
     """

@@ -1,7 +1,7 @@
 import os
 import re
 
-from djavue.parser import VueParser
+from djavue.component import VueComponent
 
 
 class VueComponentList:
@@ -33,7 +33,7 @@ class VueComponentList:
         if self._is_loaded(location):
             return
 
-        self.components.append(VueParser(location, file_name, self))
+        self.components.append(VueComponent(location, file_name, self))
 
     @staticmethod
     def from_file(path, file_name, engine=None):
@@ -45,7 +45,7 @@ class VueComponentList:
         component_list.root_path = path
         component_list.engine = engine
 
-        root = VueParser(path, file_name, component_list)
+        root = VueComponent(path, file_name, component_list)
         component_list.root = root
 
         return component_list

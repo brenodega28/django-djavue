@@ -1,6 +1,6 @@
 import unittest
 
-from djavue.parser import VueParser
+from djavue.component import VueComponent
 from djavue.component_list import VueComponentList
 
 
