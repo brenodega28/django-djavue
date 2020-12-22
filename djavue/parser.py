@@ -38,7 +38,7 @@ class VueParser:
         result = re.search(f"<{tag}>(.*)</{tag}>", raw.replace("\n", ""))
 
         if result:
-            return result.group(1)
+            return str(result.group(1)).strip()
         else:
             raise ValueError(f"Could parse {tag} tag.")
 
@@ -51,7 +51,7 @@ class VueParser:
         result = re.search(r"export default {(.*)}", script)
 
         if result:
-            return result.group(1)
+            return str(result.group(1)).strip()
         else:
             raise ValueError(f"Could parse script")
 
