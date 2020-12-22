@@ -18,7 +18,7 @@ class VueComponentList:
     def _is_loaded(self, location):
         return location in [c.location for c in self.components]
 
-    def load(self, path, by=None):
+    def load(self, path):
         """
         Loads a component to the list, if it's already loaded then it does nothing.
         """
@@ -33,7 +33,11 @@ class VueComponentList:
         if self._is_loaded(location):
             return
 
-        self.components.append(VueComponent(location, file_name, self))
+        component = VueComponent(location, file_name)
+        self.components.append(component)
+
+        for component_path in component.imports:
+            self.load(component_path)
 
     @staticmethod
     def from_file(path, file_name, engine=None):
@@ -45,7 +49,10 @@ class VueComponentList:
         component_list.root_path = path
         component_list.engine = engine
 
-        root = VueComponent(path, file_name, component_list)
+        root = VueComponent(path, file_name)
         component_list.root = root
+
+        for component_path in root.imports:
+            component_list.load(component_path)
 
         return component_list

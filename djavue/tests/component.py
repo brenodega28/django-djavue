@@ -24,13 +24,13 @@ class VueComponentListTestCase(unittest.TestCase):
     def test_load(self):
         self.component_list.load("component")
 
-        self.assertEqual(len(self.component_list.components), 3)
+        self.assertEqual(len(self.component_list.components), 2)
 
     def test_load_duplicate(self):
         self.component_list.load("component")
         self.component_list.load("imported")
 
-        self.assertEqual(len(self.component_list.components), 3)
+        self.assertEqual(len(self.component_list.components), 2)
 
     def test_from_file(self):
         component_list = VueComponentList.from_file(

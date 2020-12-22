@@ -7,8 +7,7 @@ class VueComponent:
     Parses a vue file to be understood by python
     """
 
-    def __init__(self, location, file_name, component_list):
-        self.component_list = component_list
+    def __init__(self, location, file_name):
         self.template = ""
         self.script = ""
         self.name = file_name.replace(".vue", "")
@@ -18,7 +17,7 @@ class VueComponent:
         with open(os.path.join(self.location, self.file_name), "r") as f:
             self._raw = f.read()
 
-        self._get_imports()
+        self.imports = self._get_imports()
 
     def _get_imports(self):
         """
@@ -27,8 +26,7 @@ class VueComponent:
 
         results = re.findall(r"import (.*)", self._raw)
 
-        for path in results:
-            self.component_list.load(path, by=self)
+        return [path for path in results]
 
     def _get_value_from_tag(self, tag, raw):
         """
