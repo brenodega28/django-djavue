@@ -1,5 +1,6 @@
 # Djavue
 
+![Build](https://travis-ci.com/brenodega28/django-djavue.svg?branch=main&status=passed)\
 Djavue is a Django app that allows the usage of Vue files as Django Templates.
 
 ## Installation
