@@ -35,20 +35,10 @@ def index(request):
     template = get_vue_template('index.vue', title="Homepage")
 
     return template.render({"""context here"""})
-
-## in urls.py -> path('', index, name='index')
-
-# Or
-
-from djavue import VueTemplate
-
-class Index(VueTemplate):
-    def get_context(self, request):
-        return {"""Context here"""}
-
-    class Meta:
-        page_title = "Homepage"
-        template_name = "index.vue"
-
-## in urls.py -> path('', Index.as_view(), name='index')
 ```
+
+## Links:
+
+[Tutorial](https://github.com/brenodega28/django-djavue/wiki/0.-Tutorial)
+[Pypi](https://pypi.org/project/django-djavue/)
+[Github](https://github.com/brenodega28/django-djavue)
