@@ -4,3 +4,5 @@ todo.txt
 venv
 .vscode
 .coverage
+.env
+coverage.xml
