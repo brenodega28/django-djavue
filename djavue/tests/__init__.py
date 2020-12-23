@@ -1,1 +1,2 @@
 from .component import VueComponentListTestCase, VueComponentTestCase
+from .renderer import VueRendererTestCase

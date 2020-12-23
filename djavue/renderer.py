@@ -11,12 +11,16 @@ class VueRenderer:
     Gets template info and returns the appropriate html
     """
 
-    def __init__(self, title, template_name, version="development"):
+    def __init__(self, title, template_name, version="development", engine=None):
         self.title = title
         self.html = ""
         self.version = version
 
-        self._load_engine()
+        if not engine:
+            self._load_engine()
+        else:
+            self.engine = engine
+
         self.path, self.template_name = os.path.split(
             str(self.engine.get_template(template_name).origin)
         )
@@ -30,12 +34,16 @@ class VueRenderer:
         """
         Creates the Django Engine instance that we use to get path from file name
         """
-        from django.conf import settings
+        try:
+            from django.conf import settings
 
-        obj = settings.TEMPLATES[0].copy()
-        obj["NAME"] = "a"
-        obj.pop("BACKEND")
-        self.engine = DjangoTemplates(params=obj).engine
+            obj = settings.TEMPLATES[0].copy()
+            obj["NAME"] = "a"
+            obj.pop("BACKEND")
+            self.engine = DjangoTemplates(params=obj).engine
+        except:
+            print("Error loading engine. Probably will break.")
+            pass
 
     def _get_cdn(self):
         """
