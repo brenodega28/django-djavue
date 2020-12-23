@@ -3,7 +3,7 @@
 ![Build](https://travis-ci.com/brenodega28/django-djavue.svg?branch=main&status=passed)
 [![codecov](https://codecov.io/gh/brenodega28/django-djavue/branch/main/graph/badge.svg?token=UYLA6IFYOL)](https://codecov.io/gh/brenodega28/django-djavue)\
 Djavue is a Django app that allows the usage of Vue files as Django Templates.
-It's meant to be an alternative to Django Templates for developers that want to use Vue as frontend inside Django.
+It's meant to be an alternative to Django Templates for developers that want to use Vue as frontend inside Django, without needing to setup npm or webpack.
 
 ## Installation
 
