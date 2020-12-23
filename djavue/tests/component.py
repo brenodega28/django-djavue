@@ -74,6 +74,7 @@ class VueComponentTestCase(unittest.TestCase):
 
         self.assertEqual(component.template, "<h1>{{name}}</h1>")
         self.assertEqual(component.script, 'data: () => ({        name: "test"    })')
+        self.assertEqual(self.component.style, "h1{  color: 'red'}")
 
     def test_to_component(self):
         self.assertEqual(

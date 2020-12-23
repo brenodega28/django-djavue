@@ -57,13 +57,19 @@ class VueRenderer:
                 '<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>'
             )
 
+    def _get_styles(self, context):
+        root_css = self.component_list.root.mount(context).style
+        components_css = [c.mount().style for c in self.component_list.components]
+
+        return "".join([root_css] + components_css)
+
     # BUILDER FUNCTIONS
-    def _write_header(self):
+    def _write_header(self, context):
         """
         Writes the head tag to the html
         """
 
-        self.html += f"<html><head><title>{self.title}</title>{self._get_cdn()}</head>"
+        self.html += f"<html><head><title>{self.title}</title>{self._get_cdn()}<style>{self._get_styles(context)}</style></head>"
 
     def _write_components(self, context):
         """
@@ -74,12 +80,12 @@ class VueRenderer:
             map(lambda c: c.to_component(context), self.component_list.components)
         )
 
-    def _write_body(self, context):
+    def _write_body(self):
         """
         Writes the body tag to the html
         """
-
         root = self.component_list.root.mount(context)
+
         self.html += f"<body><div id='root'>{root.template}</div><script>{self._write_components(context)}; new Vue({{el:'#root', {root.script} }})</script></body>"
 
     # RENDERINGS
@@ -88,7 +94,7 @@ class VueRenderer:
         Creates the html based on the root Vue Component passed
         """
 
-        self._write_header()
+        self._write_header(context)
         self._write_body(context)
 
         return self.html

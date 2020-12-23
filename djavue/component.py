@@ -10,6 +10,7 @@ class VueComponent:
     def __init__(self, location, file_name):
         self.template = ""
         self.script = ""
+        self.style = ""
         self.name = file_name.replace(".vue", "")
         self.location = location
         self.file_name = file_name
@@ -77,8 +78,9 @@ class VueComponent:
 
         script = self._get_script(raw)
         template = self._get_value_from_tag("template", raw)
+        style = self._get_value_from_tag("style", raw)
 
-        return (script, template)
+        return (script, template, style)
 
     def mount(self, context={}):
         """
@@ -86,10 +88,11 @@ class VueComponent:
         """
 
         replaced = self._replace_context(context)
-        script, template = self._load(replaced)
+        script, template, style = self._load(replaced)
 
         self.script = script
         self.template = template
+        self.style = style
 
         return self
 

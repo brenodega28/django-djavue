@@ -10,11 +10,11 @@ class VueRendererTestCase(unittest.TestCase):
         self.renderer = VueRenderer(self.title, "component.vue", engine=TestingEngine())
 
     def test_write_header(self):
-        self.renderer._write_header()
+        self.renderer._write_header({"name": "test"})
 
         self.assertEqual(
             self.renderer.html,
-            f"<html><head><title>{self.title}</title>{self.renderer._get_cdn()}</head>",
+            f"<html><head><title>{self.title}</title>{self.renderer._get_cdn()}<style>h1{{  color: 'red'}}</style></head>",
         )
 
     def test_write_component(self):
