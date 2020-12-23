@@ -3,6 +3,7 @@
 ![Build](https://travis-ci.com/brenodega28/django-djavue.svg?branch=main&status=passed)
 [![codecov](https://codecov.io/gh/brenodega28/django-djavue/branch/main/graph/badge.svg?token=UYLA6IFYOL)](https://codecov.io/gh/brenodega28/django-djavue)\
 Djavue is a Django app that allows the usage of Vue files as Django Templates.
+It's meant to be an alternative to Django Templates for developers that want to use Vue as frontend inside Django.
 
 ## Installation
 
@@ -39,6 +40,6 @@ def index(request):
 
 ## Links:
 
-[Tutorial](https://github.com/brenodega28/django-djavue/wiki/0.-Tutorial)
-[Pypi](https://pypi.org/project/django-djavue/)
+[Tutorial](https://github.com/brenodega28/django-djavue/wiki/0.-Tutorial)\
+[Pypi](https://pypi.org/project/django-djavue/)\
 [Github](https://github.com/brenodega28/django-djavue)
